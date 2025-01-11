@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+<title>{{ title }}</title>
+
+<body class="dark:bg-gray-900 dark:text-white" hx-history-elt hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+  <div class="p-2 text-2xl font-bold max-w-screen-xl mx-auto mt-4 mb-3">
+    <a href="/" class="hover:underline">
+      Weber State Live Results
+    </a>
+    <hr class="mt-2">
+  </div>
+  <div id="main-content" class="max-w-screen-xl mx-auto px-4 dark:bg-gray-900">
+    {% if main_content %}
+    {{ main_content | safe }}
+    {% else %}
+    404 Error
+    Nothing here results
+    {% endif %}
+  </div>
+</body>
+{% endblock %}

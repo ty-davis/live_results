@@ -1,0 +1,29 @@
+<div>
+  {% if meet %}
+  <span class="text-xl font-semibold mb-2">{{ meet.name }}</span>
+  <div class="flex">
+    <div class="px-2 border-r mr-2 dark:border-gray-700">
+      {% for event in events %}
+      <div><a href="/meets/{{ meet.slug }}/{{ event.slug }}" class="text-blue-500 hover:underline"> {{ event.event_name }}</a></div>
+      <hr class="dark:border-gray-700">
+      {% endfor %}
+    </div>
+    <div>
+      {% if event %}
+        <span class="text-xl font-semibold">
+        {{ event.event_name }}
+        </span>
+        <div class="overflow-x-auto">
+          {{ event.results_context | safe }}
+        </div>
+      {% else %}
+      "{{ event_slug }}" is an invalid event. Select a valid event from the list or <a href="/meets/" class="text-blue-500 hover:underline">go back to other meets</a>.
+      {% endif %}
+    </div>
+  </div>
+  {% else %}
+  <div>
+    "{{ meet_slug }}" is an invalid meet. <a href="/meets/" class="text-blue-500 hover:underline">Go back to other meets</a>.
+  </div>
+  {% endif %}
+</div>

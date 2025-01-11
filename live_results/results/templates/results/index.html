@@ -1,0 +1,8 @@
+<div>
+  Meets:
+  {% for meet in meets %}
+  <div>
+    <a href="/meets/{{ meet.slug }}" class="text-blue-500 hover:underline">{{meet.name}}</a>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,23 @@
+<div>
+  {% if meet %}
+  <div>
+    <span class="text-xl font-semibold mb-2">{{ meet.name }}</span>
+  </div>
+    {% if events %}
+      Select an event from the list below:
+      {% for event in events %}
+      <div><a href="/meets/{{ meet.slug}}/{{ event.slug }}" class="text-blue-500 hover:underline"> {{ event.event_name }}</a></div>
+      {% endfor %}
+    {% endif %}
+  
+  {% else %}
+    Select a meet below to see the contents of that meet.
+    {% for u_meet in meets %}
+    <div>
+      <a href="/meets/{{ u_meet.slug }}" class="text-blue-500 hover:underline">{{ u_meet.name }}</a>
+    </div>
+    {% endfor %}
+
+  {% endif %}
+
+</div>
