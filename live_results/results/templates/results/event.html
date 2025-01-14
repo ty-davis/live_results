@@ -1,19 +1,23 @@
 <div>
   {% if meet %}
   <span class="text-xl font-semibold mb-2">{{ meet.name }}</span>
-  <div class="flex">
+  <div class="flex sm:flex-row flex-col">
     <div class="px-2 border-r mr-2 dark:border-gray-700">
-      {% for event in events %}
-      <div><a href="/meets/{{ meet.slug }}/{{ event.slug }}" class="text-blue-500 hover:underline"> {{ event.event_name }}</a></div>
-      <hr class="dark:border-gray-700">
-      {% endfor %}
+      {% if events %}
+        {% for event in events %}
+        <div><a href="/meets/{{ meet.slug }}/{{ event.slug }}" class="text-blue-500 hover:underline"> {{ event.event_name }}</a></div>
+        <hr class="dark:border-gray-700">
+        {% endfor %}
+      {% else %}
+        No events found. Wait until some events are posted!
+      {% endif %}
     </div>
     <div>
       {% if event %}
         <span class="text-xl font-semibold">
         {{ event.event_name }}
         </span>
-        <div class="overflow-x-auto">
+        <div class="overflow-x-auto text-sm">
           {{ event.results_context | safe }}
         </div>
       {% else %}
